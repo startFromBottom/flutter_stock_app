@@ -44,7 +44,7 @@ class CompanyListingsViewModel with ChangeNotifier {
       _state = state.copyWith(companies: listings);
     }, error: (e) {
       // TODO : 에러 처리
-      print('remote error: ${e.toString()}');
+      print('remote error: $e');
     });
 
     _state = _state.copyWith(
