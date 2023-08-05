@@ -33,8 +33,8 @@ class ComapnyInfoViewModel with ChangeNotifier {
 
     notifyListeners();
 
-    final intradayInfo = await _repository.getIntradayInfos(symbol);
-    intradayInfo.when(
+    final intradayInfos = await _repository.getIntradayInfos(symbol);
+    intradayInfos.when(
       success: (infos) {
         _state = state.copyWith(
           stockInfos: infos,

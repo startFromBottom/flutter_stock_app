@@ -44,7 +44,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: lightColorScheme,
+        colorScheme: darkColorScheme, // lightColorScheme
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
