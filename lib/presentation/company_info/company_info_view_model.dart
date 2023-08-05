@@ -32,5 +32,24 @@ class ComapnyInfoViewModel with ChangeNotifier {
     });
 
     notifyListeners();
+
+    final intradayInfo = await _repository.getIntradayInfos(symbol);
+    intradayInfo.when(
+      success: (infos) {
+        _state = state.copyWith(
+          stockInfos: infos,
+          isLoading: false,
+          errorMessage: null,
+        );
+      },
+      error: (e) {
+        _state = state.copyWith(
+          stockInfos: [],
+          isLoading: false,
+          errorMessage: e.toString(),
+        );
+      },
+    );
+    notifyListeners();
   }
 }
