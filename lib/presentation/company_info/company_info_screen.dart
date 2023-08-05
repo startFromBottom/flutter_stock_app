@@ -79,7 +79,8 @@ class CompanyInfoScreen extends StatelessWidget {
           if (state.stockInfos.isNotEmpty)
             StockChart(
               infos: state.stockInfos,
-              color: Colors.green,
+              graphColor: Colors.green,
+              textColor: Colors.blue,
             ),
         ],
       ),
