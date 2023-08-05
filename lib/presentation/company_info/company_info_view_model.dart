@@ -7,12 +7,14 @@ class ComapnyInfoViewModel with ChangeNotifier {
 
   var _state = const CompanyInfoState();
 
-  ComapnyInfoViewModel(this._repository);
+  ComapnyInfoViewModel(this._repository, String symbol) {
+    loadCompanyInfo(symbol);
+  }
 
   CompanyInfoState get state => _state;
 
   Future<void> loadCompanyInfo(String symbol) async {
-    _state.copyWith(isLoading: true);
+    _state = _state.copyWith(isLoading: true);
     notifyListeners();
 
     final result = await _repository.getCompanyInfo(symbol);
@@ -25,6 +27,7 @@ class ComapnyInfoViewModel with ChangeNotifier {
       _state = state.copyWith(
         companyInfo: null,
         isLoading: false,
+        errorMessage: e.toString(),
       );
     });
 
